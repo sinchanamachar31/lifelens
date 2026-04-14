@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeLens - Your Health Analyzer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Welcome Screen -->
+  <div class="welcome-screen" id="welcome">
+    <div class="welcome-container">
+      <div class="welcome-icon">🌿</div>
+      <h1>Welcome to LifeLens</h1>
+      <p class="subtitle">See your lifestyle clearly</p>
+      <p class="description">Analyze your daily habits and get personalized health insights</p>
+      <button class="btn btn-primary" onclick="showLogin()">Get Started</button>
+    </div>
+  </div>
+
+  <!-- Login Screen -->
+  <div class="login-screen hidden" id="login">
+    <div class="login-container">
+      <div class="login-header">
+        <h1>Login to LifeLens</h1>
+        <p>Choose your preferred login method</p>
+      </div>
+
+      <!-- Phone OTP Login -->
+      <div class="login-form">
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="+91 9876543210" class="input-field">
+        </div>
+
+        <div id="recaptcha" class="recaptcha-container"></div>
+
+        <button class="btn btn-success" onclick="sendOTP()">Send OTP</button>
+
+        <!-- OTP Verification -->
+        <div class="otp-section hidden" id="otpSection">
+          <div class="form-group">
+            <label for="otp">Enter OTP</label>
+            <input type="text" id="otp" placeholder="000000" class="input-field otp-input" maxlength="6">
+          </div>
+          <button class="btn btn-success" onclick="verifyOTP()">Verify OTP</button>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="divider">
+        <span>OR</span>
+      </div>
+
+      <!-- Google Login -->
+      <button class="btn btn-google" onclick="googleLogin()">
+        <span class="google-icon">🔐</span>
+        Sign in with Google
+      </button>
+
+      <button class="btn btn-back" onclick="backToWelcome()">Back</button>
+    </div>
+  </div>
+
+  <!-- Main App -->
+  <div class="app hidden" id="app">
+    <div class="app-container">
+      <header class="app-header">
+        <h1>🌿 LifeLens Dashboard</h1>
+        <button class="btn btn-logout" onclick="logout()">Logout</button>
+      </header>
+
+      <div class="analyzer-section">
+        <h2>Analyze Your Lifestyle</h2>
+        <p>Check the habits that apply to you today</p>
+
+        <div class="habits-grid">
+          <label class="habit-checkbox">
+            <input type="checkbox" id="sleep">
+            <span class="habit-label">😴 Poor Sleep</span>
+          </label>
+          <label class="habit-checkbox">
+            <input type="checkbox" id="water">
+            <span class="habit-label">💧 Low Water</span>
+          </label>
+          <label class="habit-checkbox">
+            <input type="checkbox" id="exercise">
+            <span class="habit-label">🏋️ No Exercise</span>
+          </label>
+          <label class="habit-checkbox">
+            <input type="checkbox" id="junk">
+            <span class="habit-label">🍔 Junk Food</span>
+          </label>
+          <label class="habit-checkbox">
+            <input type="checkbox" id="screen">
+            <span class="habit-label">📱 High Screen</span>
+          </label>
+        </div>
+
+        <button class="btn btn-analyze" onclick="analyze()">Analyze My Lifestyle</button>
+      </div>
+
+      <div class="result hidden" id="result">
+        <h2>Your Health Analysis</h2>
+        <div class="result-score">
+          <div class="score-circle" id="scoreCircle">0</div>
+        </div>
+        <p class="result-status" id="status"></p>
+        <p class="result-insight" id="insight"></p>
+        <p class="result-eco" id="eco"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+  
+  <!-- Google Analytics (optional) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7LL2FYZF5T"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7LL2FYZF5T');
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
