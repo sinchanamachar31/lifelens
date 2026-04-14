@@ -74,8 +74,5 @@ Feel free to fork this repo and contribute!
 This project is open-source and available under the MIT License.
 
 ---
-
-## 🙌 Author
-
-* Your Name
-* GitHub: https://github.com/your-username
+Name: Sinchana M
+* GitHub: https://github.com/sinchanamachar31
